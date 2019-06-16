@@ -34,6 +34,10 @@ export class CommunicationService {
       case "listar/pessoa":
         this.personReq.list(callback);
         break;
+
+      case "deletar/pessoa":
+        this.personReq.delete(data,callback);
+        break;
     }
 
   }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CommunicationService } from 'src/app/services/communication/communication.service';
 import { Person } from 'src/app/models/Person';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-maintain-person',
@@ -10,12 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MaintainPersonComponent implements OnInit {
 
+  private modalRef: BsModalRef;
   private item: any = undefined;
   private person: Person = new Person();
 
   constructor(
     private route: ActivatedRoute,
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private modalService: BsModalService,
+    private router: Router
   ) {
     /* ======================================================================== */
     /*    O método 'constructor' sempre vai ser o primiro método a ser          */
@@ -49,10 +53,23 @@ export class MaintainPersonComponent implements OnInit {
     /* quanto cadastrar uma nova pessoa           */
     /* ========================================== */
     this.communicationService.request("manter/pessoa", this.person, (response: any) => {
-      try{
+      try {
         this.person.key = response.key
-      } catch(e){}
+      } catch (e) { }
     });
   }
 
+  private delete() {
+    this.communicationService.request("deletar/pessoa", this.person, (response: any) => {
+      try {
+        console.log(response);
+        this.router.navigate(['/listar/pessoa']);
+        this.modalService.hide(1);
+      } catch (e) { }
+    });
+  }
+
+  private openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ManagerModule } from './modules/manager/manager.module';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
+    ModalModule.forRoot(),
     ManagerModule
   ],
   providers: [

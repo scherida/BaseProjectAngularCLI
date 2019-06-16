@@ -34,8 +34,8 @@ export class PersonReq {
         }
     }
 
-    public delete(key: string, callback: any) {
-        this.db.list(this.collection).remove(key)
+    public delete(data: any, callback: any) {
+        this.db.list(this.collection).remove(data.key)
             .then((result: any) => {
                 // após terminar o processo, chamamos a função de retorno (callback)
                 callback(result);

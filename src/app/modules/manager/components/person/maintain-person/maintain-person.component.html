@@ -53,9 +53,9 @@
 
     <div class="col-12 col-sm-12 cox    l-md-6 col-lg-6 col-xl-6 offset-0 offset-sm-0 offset-md-6 offset-lg-6 offset-xl-6 ">
         <button type="submit" (click)="save()"
-            [ngClass]="{'col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6': (paramId != undefined), 'col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-0 offset-sm-0 offset-md-6 offset-lg-6 offset-xl-6': (paramId == undefined)}"
+            [ngClass]="{'col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6': (item != undefined), 'col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-0 offset-sm-0 offset-md-6 offset-lg-6 offset-xl-6': (item == undefined)}"
             class="  btn btn-primary">Salvar</button>
-        <button type="button" (click)="openModal(template)" *ngIf="paramId != undefined"
+        <button type="button" (click)="openModal(template)" *ngIf="item != undefined"
             class=" col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 btn btn-outline-danger">Deletar</button>
     </div>
 
