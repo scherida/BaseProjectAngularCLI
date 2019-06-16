@@ -6,6 +6,7 @@ export class Product {
     public DetailedDescription: string = "";
     public briefDescription: string = "";
     public name: string = "";
-    public value: string = "";
+    public value: number = 0;
+    public images: any[string] = [];
 
 }

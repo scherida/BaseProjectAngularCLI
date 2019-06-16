@@ -13,13 +13,15 @@ import { ManagerModule } from './modules/manager/manager.module';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { MonetaryPipe } from './pipes/monetary.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProductDetailsComponent,
-    NavBarComponent
+    NavBarComponent,
+    MonetaryPipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ManagerModule
   ],
   providers: [
-    AngularFireDatabase
+    AngularFireDatabase,
+    MonetaryPipe
+  ],
+  exports: [
+    MonetaryPipe
   ],
   bootstrap: [AppComponent]
 })

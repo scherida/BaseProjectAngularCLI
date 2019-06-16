@@ -10,6 +10,7 @@ import { ListRequestsComponent } from './components/requests/list-requests/list-
 import { MaintainRequestsComponent } from './components/requests/maintain-requests/maintain-requests.component';
 import { FormsModule } from '@angular/forms';
 import { ManagerRoutingModule } from './manager-routing.module';
+import { MonetaryPipe } from './pipes/monetary.pipe';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -20,7 +21,8 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     ListPersonComponent, 
     MaintainPersonComponent, 
     ListRequestsComponent, 
-    MaintainRequestsComponent
+    MaintainRequestsComponent,
+    MonetaryPipe
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,9 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     MaintainPersonComponent, 
     ListRequestsComponent, 
     MaintainRequestsComponent
+  ],
+  providers: [
+    
   ]
 })
 export class ManagerModule { }
