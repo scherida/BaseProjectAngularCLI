@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MonetaryPipe } from './pipes/monetary.pipe';
+import { ReguestComponent } from './components/reguest/reguest.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MonetaryPipe } from './pipes/monetary.pipe';
     HomeComponent,
     ProductDetailsComponent,
     NavBarComponent,
-    MonetaryPipe
+    MonetaryPipe,
+    ReguestComponent
   ],
   imports: [
     BrowserModule,

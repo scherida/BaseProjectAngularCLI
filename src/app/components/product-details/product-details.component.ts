@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  private preco: number = 500;
   constructor() { }
 
   ngOnInit() {
