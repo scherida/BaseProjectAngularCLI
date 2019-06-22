@@ -19,6 +19,7 @@ export class CommunicationService {
   ) {
     this.personReq = new PersonReq(this.db);
     this.productsReq = new ProductsReq(this.db);
+    this.requestsReq = new RequestsReq(this.db)
   }
 
   public request(path: string, data: any, callback: any): void {

@@ -7,6 +7,7 @@ export class Requests {
     public coupon: string = "";
     public deliveryMode: string = "";
     public idPerson: string = "";
-    public idsProducts: any[string] = [];    
+    public idsProducts: any[any] = [];    
 
 }
+
