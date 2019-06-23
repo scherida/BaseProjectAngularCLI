@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { ReguestComponent } from './components/reguest/reguest.component';
 import { SessionService } from './services/session/session.service';
 import { SlideProductsComponent } from './components/slide-products/slide-products.component';
 import { CartComponent } from './components/cart/cart.component';
+import { LoginGuard } from './guards/login.guard';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { CartComponent } from './components/cart/cart.component';
     MonetaryPipe,
     ReguestComponent,
     SlideProductsComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,10 @@ import { CartComponent } from './components/cart/cart.component';
   providers: [
     AngularFireDatabase,
     MonetaryPipe,
-    SessionService
+    SessionService,
+    AngularFireAuthModule,
+    AngularFireAuth,
+    LoginGuard
   ],
   exports: [
     MonetaryPipe

@@ -9,7 +9,10 @@ export class SessionService {
 
   public static getItem( key : string ): string {
     try {
-      return atob(localStorage.getItem(key));
+      var item = localStorage.getItem(key);
+      if( item != undefined && item != "" ){
+        return atob(item);
+      }
     } catch (e){}
   }
 
