@@ -1,0 +1,123 @@
+<div class="my-container">
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h1>Carrinho</h1>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+          <div class="form-group col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <label for="exampleFormControlSelect1">N°</label>
+            <select class="form-control" id="exampleFormControlSelect1" (change)="toPage(undefined)" [(ngModel)]="limit"
+              name="limit">
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+            </select>
+          </div>
+
+          <div
+            class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 offset-0 offset-sm-0 offset-md-8 offset-lg-8 offset-xl-8">
+            <button *ngIf=" mainList.length > 0 " class="btn btn-dark col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+              type="button" (click)="openModal(template)">
+              Finalizar a compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <table class="table table-responsive-sm table-bordered table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mainList; let i = index" (click)="select(item)">
+        <th scope="row">{{item.key}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.value | monetary}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="...">
+    <ul class="pagination ">
+      <li *ngFor="let item of pagination; let i = index" [ngClass]="{'active': (item.active == true) }"
+        (click)="toPage(item.position)" class="page-item active" aria-current="page">
+        <span class="page-link">
+          {{ item.position }}
+        </span>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ng-template #template>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ultimas informações</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nome</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" laceholder="form.person name"
+          [(ngModel)]="form.person.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">E-mail</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Enter email" [(ngModel)]="form.person.email" name="email">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefone</label>
+        <input type="text" class="form-control" id="phone" aria-describedby="emailHelp" ngxPhoneMaskBr
+          placeholder="(00) 00000-0000" [(ngModel)]="form.person.phone" name="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="street">Modo de entrega</label>
+        <select [(ngModel)]="form.deliveryMode" name="deliveryMode" class="form-control" id="exampleFormControlSelect1">
+          <option value="0">Buscar na loja</option>
+          <option value="1">Entregar em casa</option>
+        </select>
+      </div>
+
+      <div *ngIf=" form.deliveryMode == 1 " class="form-group">
+        <label for="cep">CEP</label>
+        <input type="text" class="form-control" id="cep" aria-describedby="emailHelp" placeholder="00.000-000"
+          mask="00.000-000" [(ngModel)]="form.person.cep" name="cep">
+      </div>
+
+      <div *ngIf=" form.deliveryMode == 1 " class="form-group">
+        <label for="street">Rua</label>
+        <input type="text" class="form-control" id="street" aria-describedby="emailHelp" placeholder="Rua da residencia"
+          [(ngModel)]="form.person.street" name="street">
+      </div>
+
+      <div class="form-group">
+        <label for="street">Código promocional</label>
+        <input type="text" class="form-control" id="street" aria-describedby="emailHelp" placeholder="Rua da residencia"
+          [(ngModel)]="form.coupon" name="coupon">
+      </div>
+
+
+    </form>
+
+    <hr>
+
+    <button type="button" class="btn btn-default" (click)="finalize()">Finalizar a compra</button>
+    <button type="button" class="btn btn-danger" (click)="modalRef.hide()">Cancelar</button>
+  </div>
+
+</ng-template>

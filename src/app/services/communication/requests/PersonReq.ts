@@ -20,7 +20,7 @@ export class PersonReq {
                     // salvando a chave da passoa
                     data.key = result.key
                     this.db.list(this.collection).update(data.key, data)
-                        .then((result: any) => {
+                        .then((result2: any) => {
                             // após terminar o processo, chamamos a função de retorno (callback)
                             callback(result);
                         });

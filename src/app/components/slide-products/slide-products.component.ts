@@ -42,11 +42,8 @@ export class SlideProductsComponent implements OnInit {
   }
 
   select(item: any) {
-    if (item == -1) {
-      
-    } else {
+    if (item == -1) {} else {
       this.router.navigate(['/detalhe/produto/', { item: JSON.stringify(item) }]);
     }
-
   }
 }

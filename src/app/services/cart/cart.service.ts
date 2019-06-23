@@ -5,6 +5,7 @@ import { Requests } from 'src/app/models/Requests';
 import { Observable } from 'rxjs';
 import { SessionService } from '../session/session.service';
 import { Constants } from 'src/app/models/Constants';
+import { Person } from 'src/app/models/Person';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,20 @@ export class CartService {
   private list: Product[] = [];
   private request: Requests;
 
+
   constructor(
     private communicationService: CommunicationService
   ) { }
 
-  public inCart(product: Product): boolean{
+  get() : Product[] {
+    return this.verifyMyList();
+  }
+
+  public inCart(product: Product): boolean {
     /* ======================================================== */
     /*   verivicação para saber se o produto está no carrinho   */
     /* ======================================================== */
-    try{
+    try {
       /* ======================================================================== */
       /* Esse método tenta captuar do localStorange caso a lista esteja iniciada, */
       /* também é para previnir erros ao recarregar a página ( 'F5' )             */
@@ -30,11 +36,7 @@ export class CartService {
       /* diferenciar esse objeto dos outros que estão guardados no memória do     */
       /* navegador.                                                               */
       /* ======================================================================== */
-      if(this.list == undefined || this.list.length == undefined  || this.list.length == 0){
-        this.list = JSON.parse(
-          SessionService.getItem(Constants.CART_SERVICE)
-        );
-      }
+      this.verifyMyList();
       for (var i = 0; i < this.list.length; i++) {
         if (this.list[i].key == product.key) {
           this.list[i] = product;
@@ -43,7 +45,7 @@ export class CartService {
         }
       }
       return false;
-    } catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -65,13 +67,38 @@ export class CartService {
     }
   }
 
-  public finalize() {
+  public finalize(idPerson: string, coupon: string, deliveryMode: string) {
     this.request = new Requests();
-    this.request.idsProducts = this.list;
+    this.request.idPerson = idPerson;
+    this.request.coupon = coupon;
+    this.request.deliveryMode = deliveryMode;
+    this.request.products = this.list;
+    this.request.amount = this.calculate();
     this.communicationService.request("manter/pedido", this.request,
       (result) => {
         console.log(result);
       }
     );
+  }
+
+  private calculate() : number{
+    var finalValue = 0;
+    for (var i = 0; i < this.list.length; i++) {
+      finalValue = finalValue + this.list[i].value;
+    }
+    return finalValue
+  }
+
+  private verifyMyList(){
+    try{
+      if (this.list == undefined || this.list.length == undefined || this.list.length == 0) {
+        this.list = JSON.parse(
+          SessionService.getItem(Constants.CART_SERVICE)
+        );
+      }
+    } catch(e){
+      this.list = [];
+    }
+    return this.list;
   }
 } 

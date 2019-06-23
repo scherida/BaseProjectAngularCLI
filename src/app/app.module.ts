@@ -17,6 +17,7 @@ import { MonetaryPipe } from './pipes/monetary.pipe';
 import { ReguestComponent } from './components/reguest/reguest.component';
 import { SessionService } from './services/session/session.service';
 import { SlideProductsComponent } from './components/slide-products/slide-products.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SlideProductsComponent } from './components/slide-products/slide-produc
     NavBarComponent,
     MonetaryPipe,
     ReguestComponent,
-    SlideProductsComponent
+    SlideProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
