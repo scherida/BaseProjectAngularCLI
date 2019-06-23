@@ -15,6 +15,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MonetaryPipe } from './pipes/monetary.pipe';
 import { ReguestComponent } from './components/reguest/reguest.component';
+import { SessionService } from './services/session/session.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReguestComponent } from './components/reguest/reguest.component';
   ],
   providers: [
     AngularFireDatabase,
-    MonetaryPipe
+    MonetaryPipe,
+    SessionService
   ],
   exports: [
     MonetaryPipe

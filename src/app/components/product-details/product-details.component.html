@@ -28,28 +28,22 @@
     <div class="col-sm-12 col-lg-6">
       <h1> Bolo de Uva <small class="text-danger">Oferta</small></h1>
       <div class="card">
-        <div class="card-body">
-          <h4><small class="text-danger">{{ preco | monetary }}</small></h4>
-          <p class="display-6"> O meu bolo de uva é simplesmente delicioso e integral, ele fica úmido e ao comer você
-            encontra muitas pequenas surpresas que conferem doçura e acidez ao bolo.</p>
-          <h4>Descrição</h4>
-          <p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-            demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain
-            and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through
-            weakness of will, which is the same as saying through shrinking from toil and pain. These cases are
-            perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when
-            nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain
-            avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will
-            frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always
-            holds in these matters to this principle of selection: he rejects pleasures to secure other greater
-            pleasures, or else he endures pains to avoid worse pains."
-
-          </p>
+        <div class="card-body row">
+          <div class="col-12 col-lg-6">
+            <h4><small class="text-danger">{{ product.value | monetary }}</small></h4>
+          </div>
+          <div class="col-12 col-lg-6 text-right">
+            <button *ngIf=" inCart == false " (click)="addToCard()" type="button" class="btn btn-primary">Adicionar Ao carrinho</button>
+            <button *ngIf=" inCart == true  " (click)="removeFromCart()" type="button" class="btn btn-outline-danger">Remover do carrinho</button>
+          </div>
+          <div class="col-12">
+            <p class="display-6">{{ product.briefDescription }}</p>
+            <hr>
+            <h4>Descrição</h4>
+            <p>{{ product.DetailedDescription }}</p>
+          </div>
         </div>
       </div>
     </div> 
-    <div class="cul-12">
-      <app-reguest></app-reguest>
-    </div>
   </div>
 </div>
