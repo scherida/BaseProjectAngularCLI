@@ -1,0 +1,20 @@
+<div class="component row">
+
+  <button class="col-1 control control-l" (click)="toLeft()">
+    <img src="assets/images/back.svg" alt="">
+  </button>
+  <div id="block" class="block col-10">
+    <div class="card" *ngFor="let item of mainList; let i = index">
+      <img src="assets/images/image.png" class="card-img-top" alt="assets/images/image.png">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.briefDescription }}</p>
+        <button (click)="select(item)" class="btn btn-primary">Veja mais</button>
+      </div>
+    </div>
+  </div>
+  <button class="col-1 control control-r" (click)="toRight()"> 
+    <img src="assets/images/next.svg" alt="">
+  </button>
+
+</div>

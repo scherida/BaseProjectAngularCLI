@@ -16,6 +16,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { MonetaryPipe } from './pipes/monetary.pipe';
 import { ReguestComponent } from './components/reguest/reguest.component';
 import { SessionService } from './services/session/session.service';
+import { SlideProductsComponent } from './components/slide-products/slide-products.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SessionService } from './services/session/session.service';
     ProductDetailsComponent,
     NavBarComponent,
     MonetaryPipe,
-    ReguestComponent
+    ReguestComponent,
+    SlideProductsComponent
   ],
   imports: [
     BrowserModule,

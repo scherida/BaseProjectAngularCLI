@@ -1,0 +1,48 @@
+.component{
+    height: 80vh;
+    width: 100%;
+    overflow-x: hidden;
+    
+}
+
+.block{
+    height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    animation-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+.card{
+    margin-left: 1vh;
+    margin-right: 1vh;
+    display: inline-block;
+    height: 100%;
+    width: 250px;
+    white-space: initial;
+}
+
+.control{
+    border: none;
+
+    img{
+        width: 100%;
+    }
+    background: rgba(0,0,0,0.3);
+    &:hover{
+        background: rgba(0,0,0,0.5);
+    }
+}
+
+.control-l{
+    color: #fff;
+    transition-duration: 500ms;
+    
+}
+
+.control-r{
+    color: #fff;
+    transition-duration: 500ms;
+}

@@ -51,7 +51,7 @@ export class MaintainProductsComponent implements OnInit {
     /* esse método é utilizado tanto para editar  */
     /* ou para cadastrar uma nova pessoa          */
     /* ========================================== */
-    this.communicationService.request("manter/produto", this.product, (response: any) => {
+    this.communicationService.request("manter/produto", JSON.parse(JSON.stringify(this.product)), (response: any) => {
       try {
         this.product.key = response.key
       } catch (e) { }

@@ -1,6 +1,19 @@
 export class Product {
 
-    constructor() {}
+    constructor() { }
+
+    public static cast(data: any): Product {
+        var product: Product = new Product();
+
+        product.key = data.key;
+        product.DetailedDescription = data.DetailedDescription;
+        product.briefDescription = data.briefDescription;
+        product.name = data.name;
+        product.value = data.value;
+        product.images = data.images;
+
+        return product;
+    }
 
     public key: string = "";
     public DetailedDescription: string = "";
@@ -13,8 +26,8 @@ export class Product {
     /* =========================================== */
     /* método para o evento de remoção do carrinho */
     /* =========================================== */
-    private remove = ()=>{}
-    public addRemoveToCart(calback : any) {
+    private remove = () => { }
+    public addRemoveToCart(calback: any) {
         this.remove = calback;
     }
     public removeToCart() {
@@ -24,8 +37,8 @@ export class Product {
     /* =========================================== */
     /* método para o evento de adição do carrinho  */
     /* =========================================== */
-    private add = ()=>{}
-    public addAddToCart(calback : any) {
+    private add = () => { }
+    public addAddToCart(calback: any) {
         this.add = calback;
     }
     public addToCart() {

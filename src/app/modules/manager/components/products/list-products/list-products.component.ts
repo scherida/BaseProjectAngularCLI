@@ -36,7 +36,7 @@ export class ListProductsComponent implements OnInit {
     this.search();
   }
 
-  select(item: number) {
+  select(item: any) {
     /* ====================================================================== */
     /* esse método é utilizado para navedar para a tela de edição ou cadastro.*/
     /* caso 'item' seja igual a -1 assumiremos que o usuário deseja cadastrar */
