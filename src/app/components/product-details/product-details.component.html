@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf=" noProduct == false " class="row">
     <div class="col-sm-12 col-lg-6">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -33,8 +33,10 @@
             <h4><small class="text-danger">{{ product.value | monetary }}</small></h4>
           </div>
           <div class="col-12 col-lg-6 text-right">
-            <button *ngIf=" inCart == false " (click)="addToCard()" type="button" class="btn btn-primary">Adicionar Ao carrinho</button>
-            <button *ngIf=" inCart == true  " (click)="removeFromCart()" type="button" class="btn btn-outline-danger">Remover do carrinho</button>
+            <button *ngIf=" inCart == false " (click)="addToCard()" type="button" class="btn btn-primary">Adicionar Ao
+              carrinho</button>
+            <button *ngIf=" inCart == true  " (click)="removeFromCart()" type="button"
+              class="btn btn-outline-danger">Remover do carrinho</button>
           </div>
           <div class="col-12">
             <p class="display-6">{{ product.briefDescription }}</p>
@@ -49,6 +51,172 @@
       <hr>
       <h1>Outros produtos</h1>
       <app-slide-products></app-slide-products>
+    </div>
+  </div>
+
+  <div *ngIf=" noProduct == true " class="row">
+
+    <div class="cloudPane col-12">
+      <div class="stars">
+        <div class="star" id="star1"></div>
+        <div class="star"></div>
+        <div class="star" id="star2"></div>
+        <div class="star"></div>
+        <div class="star" id="star3"></div>
+        <div class="star"></div>
+        <div class="star" id="star4"></div>
+        <div class="star"></div>
+        <div class="star" id="star5"></div>
+        <div class="star"></div>
+        <div class="star" id="star6"></div>
+        <div class="star"></div>
+        <div class="star" id="star7"></div>
+        <div class="star"></div>
+        <div class="star" id="star8"></div>
+        <div class="star"></div>
+        <div class="star" id="star9"></div>
+        <div class="star"></div>
+        <div class="star" id="star10"></div>
+        <div class="star"></div>
+        <div class="star" id="star11"></div>
+        <div class="star"></div>
+      </div>
+
+      <div class="bigCloud" id="cloud1">
+        <div class="largeCircle" id="circ1">
+
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+      <div class="bigCloud" id="cloud2">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+
+      <div class="bigCloud" id="cloud3">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+
+      <div class="bigCloud" id="cloud4">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+
+      <div class="bigCloud" id="cloud5">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+
+      <div class="bigCloud" id="cloud6">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+
+      <div class="bigCloud" id="cloud7">
+        <div class="largeCircle" id="circ1">
+          <div class="largeCircle" id="circ1shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ2">
+          <div class="middleCircle" id="circ2shadow"></div>
+        </div>
+        <div class="middleCircle" id="circ3">
+          <div class="middleCircle" id="circ3shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ4"></div>
+        <div class="smallCircle" id="circ5">
+          <div class="smallCircle" id="circ5shadow"></div>
+        </div>
+        <div class="smallCircle" id="circ6">
+          <div class="smallCircle" id="circ6shadow"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 offset-sm-0 offset-lg-3">
+      <h1>Produto não encontrado... :^(</h1>
     </div>
   </div>
 </div>

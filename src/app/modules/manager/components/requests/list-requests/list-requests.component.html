@@ -32,7 +32,7 @@
       <tbody>
         <tr *ngFor="let item of mainList; let i = index" (click)="select(item)">
           <th scope="row">{{item.key}}</th>
-          <td>{{item.date}}</td>
+          <td>{{item.date | mask:'00/00/0000'}}</td>
           <td>{{item.amount | monetary}}</td>
         </tr>
       </tbody>
