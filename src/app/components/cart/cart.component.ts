@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
   }
 
   select(item: any) {
-    if (item == -1) {} else {
+    if (item == -1) { } else {
       this.router.navigate(['/detalhe/produto/', { item: JSON.stringify(item) }]);
     }
   }
@@ -65,12 +65,24 @@ export class CartComponent implements OnInit {
 
   public finalize() {
     this.form.person.key = "";
-    this.communicationService.request("manter/pessoa", this.form.person, (response: any) => {
-      try {
-        this.cartService.finalize(response.key, this.form.coupon, this.form.deliveryMode,  this.form.date);
-      } catch (e) { }
-    });
-    
+    if (
+      (this.form == undefined || this.form.person == undefined) ||
+      (this.form.person.email == undefined || this.form.person.email == "") ||
+      (this.form.person.phone == undefined || this.form.person.phone == "") ||
+      (this.form.person.cep == undefined || (this.form.deliveryMode == 1 && this.form.person.cep == "")) ||
+      (this.form.person.street == undefined || (this.form.deliveryMode == 1 && this.form.person.street == "")) ||
+      (this.form.coupon == undefined) ||
+      (this.form.date == undefined || this.form.date == "") ||
+      (this.form.deliveryMode == undefined || this.form.deliveryMode == "")
+    ) {
+
+    } else {
+      this.communicationService.request("manter/pessoa", this.form.person, (response: any) => {
+        try {
+          this.cartService.finalize(response.key, this.form.coupon, this.form.deliveryMode, this.form.date);
+        } catch (e) { }
+      });
+    }
   }
 
 }

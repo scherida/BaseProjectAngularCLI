@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'detalhe/produto/:item', component: ProductDetailsComponent },
   { path: 'carrinho', component: CartComponent },
   { path: 'inicio', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent }
 ];
 

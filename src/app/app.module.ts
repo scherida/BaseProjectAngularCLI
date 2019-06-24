@@ -23,6 +23,8 @@ import { SlideProductsComponent } from './components/slide-products/slide-produc
 import { CartComponent } from './components/cart/cart.component';
 import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './components/login/login.component';
+import { MessagesService } from './services/messages/messages.service';
+import { ToastComponent } from './components/toast/toast.component';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -36,7 +38,8 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     ReguestComponent,
     SlideProductsComponent,
     CartComponent,
-    LoginComponent
+    LoginComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     AngularFireDatabase,
     MonetaryPipe,
     SessionService,
+    MessagesService,
     AngularFireAuthModule,
     AngularFireAuth,
     LoginGuard

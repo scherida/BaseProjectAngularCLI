@@ -2,3 +2,9 @@
     padding: 3vh;
     padding-top: 10vh;
 }
+
+.myToast {
+    position: fixed;
+    margin-top: -90vh;
+    z-index: 99999999;
+}

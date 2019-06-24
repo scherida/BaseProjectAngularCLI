@@ -1,0 +1,8 @@
+<div class="alert  alert-dismissible fade show" role="alert"
+  *ngFor='let message of messagesService.messages'
+  [ngClass]="{'alert-primary': (message.status == 'primary'), 'alert-secondary': (message.status == 'secondary'), 'alert-success': (message.status == 'success'), 'alert-danger': (message.status == 'danger'), 'alert-warning': (message.status == 'warning'), 'alert-info': (message.status == 'info'), 'alert-light': (message.status == 'light'), 'alert-dark': (message.status == 'dark') }">
+  {{ message.message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close(message.position)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
