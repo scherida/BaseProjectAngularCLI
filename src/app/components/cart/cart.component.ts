@@ -64,9 +64,10 @@ export class CartComponent implements OnInit {
   }
 
   public finalize() {
+    this.form.person.key = "";
     this.communicationService.request("manter/pessoa", this.form.person, (response: any) => {
       try {
-        this.cartService.finalize(response.key, this.form.coupon, this.form.deliveryMode);
+        this.cartService.finalize(response.key, this.form.coupon, this.form.deliveryMode,  this.form.date);
       } catch (e) { }
     });
     

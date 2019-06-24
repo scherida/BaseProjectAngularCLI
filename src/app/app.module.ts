@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
@@ -22,6 +24,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './components/login/login.component';
 
+export var options: Partial<IConfig> | (() => Partial<IConfig>);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,10 @@ import { LoginComponent } from './components/login/login.component';
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     ModalModule.forRoot(),
-    ManagerModule
+    ManagerModule,
+    NgxPhoneMaskBrModule,
+    NgxMaskModule.forRoot(options),
+    NgxPhoneMaskBrModule
   ],
   providers: [
     AngularFireDatabase,

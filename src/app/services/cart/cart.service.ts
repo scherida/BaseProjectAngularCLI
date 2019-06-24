@@ -67,10 +67,11 @@ export class CartService {
     }
   }
 
-  public finalize(idPerson: string, coupon: string, deliveryMode: string) {
+  public finalize(idPerson: string, coupon: string, deliveryMode: string, date: string) {
     this.request = new Requests();
     this.request.idPerson = idPerson;
     this.request.coupon = coupon;
+    this.request.date = date;
     this.request.deliveryMode = deliveryMode;
     this.request.products = this.list;
     this.request.amount = this.calculate();
@@ -84,7 +85,7 @@ export class CartService {
   private calculate() : number{
     var finalValue = 0;
     for (var i = 0; i < this.list.length; i++) {
-      finalValue = finalValue + this.list[i].value;
+      finalValue = finalValue + parseInt(this.list[i].value+"");
     }
     return finalValue
   }

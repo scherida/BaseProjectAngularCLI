@@ -1,3 +1,50 @@
-<p>
-  list-requests works!
-</p>
+<div class="my-container">
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h1>Pedidos</h1>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="form-group col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+              <label for="exampleFormControlSelect1">N°</label>
+              <select class="form-control" id="exampleFormControlSelect1" (change)="toPage(undefined)" [(ngModel)]="limit"
+                name="limit">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>40</option>
+                <option>50</option>
+              </select>
+            </div> 
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <table class="table table-responsive-sm table-bordered table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Data de entrega</th>
+          <th scope="col">Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mainList; let i = index" (click)="select(item)">
+          <th scope="row">{{item.key}}</th>
+          <td>{{item.date}}</td>
+          <td>{{item.amount | monetary}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <nav aria-label="...">
+      <ul class="pagination ">
+        <li *ngFor="let item of pagination; let i = index" [ngClass]="{'active': (item.active == true) }"
+          (click)="toPage(item.position)" class="page-item active" aria-current="page">
+          <span class="page-link">
+            {{ item.position }}
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>

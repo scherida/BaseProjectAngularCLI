@@ -1,3 +1,83 @@
-<p>
-  maintain-requests works!
-</p>
+<div class="my-container row">
+  <h1 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    {{ (item == undefined ? 'Novo pedido' : 'Editando '+requests.key) }} </h1>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <div class="form-group">
+      <label for="key">Id</label>
+      <input type="text" class="form-control" id="key" aria-describedby="emailHelp" placeholder="requests id"
+        [(ngModel)]="requests.key" name="key" disabled>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Cupom</label>
+      <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="requests name"
+        [(ngModel)]="requests.coupon" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="date">Data de entrega</label>
+      <input type="text" class="form-control" id="date" aria-describedby="emailHelp" mask="00/00/0000"
+        placeholder="00/00/0000" [(ngModel)]="requests.date" name="date">
+    </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Valor</label>
+      <input type="text" class="form-control" id="value" aria-describedby="emailHelp" placeholder="requests value"
+        [(ngModel)]="requests.amount" name="value">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Modo de entrega</label>
+      <select [(ngModel)]="requests.deliveryMode" name="deliveryMode" class="form-control"
+        id="exampleFormControlSelect1">
+        <option value="0">Buscar na loja</option>
+        <option value="1">Entregar em casa</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <table class="table table-responsive-sm table-bordered table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Preço</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of requests.products; let i = index" >
+          <th scope="row">{{item.key}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.value | monetary}}</td>
+          <td>
+              <button type="button" class="btn btn-link" (click)="select(item)">Ver</button>
+              <button type="button" class="btn btn-link" (click)="removeProduct(item)">remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="col-12 col-sm-12 cox    l-md-6 col-lg-6 col-xl-6 offset-0 offset-sm-0 offset-md-6 offset-lg-6 offset-xl-6 ">
+    <button type="submit" (click)="save()"
+      [ngClass]="{'col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6': (item != undefined), 'col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-0 offset-sm-0 offset-md-6 offset-lg-6 offset-xl-6': (item == undefined)}"
+      class="  btn btn-primary">Salvar</button>
+    <button type="button" (click)="openModal(template)" *ngIf="item != undefined"
+      class=" col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 btn btn-outline-danger">Deletar</button>
+  </div>
+
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Deseja mesmo deletar este pedido?</p>
+    <button type="button" class="btn btn-default" (click)="delete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef.hide()">Não</button>
+  </div>
+</ng-template>

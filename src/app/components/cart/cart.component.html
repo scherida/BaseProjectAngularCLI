@@ -70,19 +70,25 @@
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Nome</label>
-        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" laceholder="form.person name"
-          [(ngModel)]="form.person.name" name="name">
+        <input type="text" class="form-control" id="name" placeholder="Seu nome" [(ngModel)]="form.person.name"
+          name="name">
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">E-mail</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="Enter email" [(ngModel)]="form.person.email" name="email">
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Seu e-mail"
+          [(ngModel)]="form.person.email" name="email">
       </div>
 
       <div class="form-group">
         <label for="phone">Telefone</label>
-        <input type="text" class="form-control" id="phone" aria-describedby="emailHelp" ngxPhoneMaskBr
-          placeholder="(00) 00000-0000" [(ngModel)]="form.person.phone" name="phone">
+        <input type="text" class="form-control" id="phone" ngxPhoneMaskBr placeholder="(00) 00000-0000"
+          [(ngModel)]="form.person.phone" name="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="date">Data de entrega</label>
+        <input type="text" class="form-control" id="date" mask="00/00/0000" placeholder="00/00/0000"
+          [(ngModel)]="form.date" name="date">
       </div>
 
       <div class="form-group">
@@ -95,20 +101,20 @@
 
       <div *ngIf=" form.deliveryMode == 1 " class="form-group">
         <label for="cep">CEP</label>
-        <input type="text" class="form-control" id="cep" aria-describedby="emailHelp" placeholder="00.000-000"
-          mask="00.000-000" [(ngModel)]="form.person.cep" name="cep">
+        <input type="text" class="form-control" id="cep" placeholder="00.000-000" mask="00.000-000"
+          [(ngModel)]="form.person.cep" name="cep">
       </div>
 
       <div *ngIf=" form.deliveryMode == 1 " class="form-group">
         <label for="street">Rua</label>
-        <input type="text" class="form-control" id="street" aria-describedby="emailHelp" placeholder="Rua da residencia"
+        <input type="text" class="form-control" id="street" placeholder="Rua da residencia"
           [(ngModel)]="form.person.street" name="street">
       </div>
 
       <div class="form-group">
-        <label for="street">Código promocional</label>
-        <input type="text" class="form-control" id="street" aria-describedby="emailHelp" placeholder="Rua da residencia"
-          [(ngModel)]="form.coupon" name="coupon">
+        <label for="coupon">Código promocional</label>
+        <input type="text" class="form-control" id="coupon" placeholder="########" [(ngModel)]="form.coupon"
+          name="coupon">
       </div>
 
 
